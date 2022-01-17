@@ -1,0 +1,42 @@
+{
+  "name": "TypeScriptTemplate",
+  "version": "0.0.1",
+  "description": "Example how a project template could look like",
+  "main": "./build/server.js",
+  "scripts": {
+    "setup-dev": "npm install && tsc",
+    "start": "npm run build && npm run serve",
+    "serve": "nodemon -r dotenv/config build/server.js",
+    "build": "npm run build-ts",
+    "watch-node": "nodemon -r dotenv/config build/server.js",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w",
+    "debug-server": "nodemon --legacy-watch --watch ./build --inspect=0.0.0.0:5858 --nolazy ./build/server.js",
+    "start-server": "nodemon build/server.js",
+    "test:jest-cov": "jest --coverage --passWithNoTests --runInBand --detectOpenHandles",
+    "sonarqube:docker": "docker start sonarqube",
+    "sonarqube:start-sh": "sh sonar_scan.sh",
+    "sonarqube:start": "sonar_scan.sh",
+    "sonarqube:linux:darwin": "run-s sonarqube:docker sonarqube:start-sh",
+    "sonarqube:default": "run-s sonarqube:docker sonarqube:start",
+    "sonarqube": "run-script-os"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Flohman/TypeScriptTemplate"
+  },
+  "author": "Florian Fuchs",
+  "license": "ISC",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@types/jest": "^25.2.1",
+    "@types/node": "^13.11.1",
+    "jest": "^25.3.0",
+    "ts-jest": "^25.3.1",
+    "nodemon": "^2.0.3",
+    "npm-run-all": "^4.1.5",
+    "run-script-os": "^1.1.1",
+    "wait-on": "^4.0.2"
+  }
+}
